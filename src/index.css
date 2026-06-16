@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --page-bg: 250 250 250;
+  --page-fg: 17 24 39;
+  --surface: 255 255 255;
+  --surface-muted: 244 244 245;
+  --border: 228 228 231;
+  --muted: 82 82 91;
+  --accent: 24 24 27;
+}
+
+.dark {
+  color-scheme: dark;
+  --page-bg: 9 9 11;
+  --page-fg: 250 250 250;
+  --surface: 24 24 27;
+  --surface-muted: 39 39 42;
+  --border: 63 63 70;
+  --muted: 161 161 170;
+  --accent: 250 250 250;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(var(--page-bg));
+  color: rgb(var(--page-fg));
+  font-family: Inter, system-ui, sans-serif;
+}
+
+::selection {
+  background: rgb(var(--accent));
+  color: rgb(var(--page-bg));
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    @apply border border-zinc-200/80 bg-white/80 shadow-soft backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/80;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500 dark:text-zinc-400;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50;
+  }
+
+  .section-copy {
+    @apply text-base leading-8 text-zinc-600 dark:text-zinc-300;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-zinc-500 transition-colors duration-300 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50;
+  }
+
+  .nav-link-active {
+    @apply text-zinc-950 dark:text-zinc-50;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300 bg-transparent px-6 py-3 text-sm font-medium text-zinc-950 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200;
+  }
+}
