@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleButtonRef = useRef(null);
+  const firstMobileLinkRef = useRef(null);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -16,6 +18,27 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
       document.body.style.overflow = '';
     };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      // focus first link in mobile nav when opened
+      firstMobileLinkRef.current?.focus();
+    } else {
+      // restore focus to the toggle button when closed
+      toggleButtonRef.current?.focus();
+    }
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        setMobileOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/85 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/85">
@@ -41,20 +64,27 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
+            ref={toggleButtonRef}
           >
             {mobileOpen ? <FiX size={18} /> : <FiMenu size={18} />}
           </button>
         </div>
       </div>
 
-      <div className={`border-t border-zinc-200/80 bg-white px-4 py-4 transition-all duration-300 md:hidden dark:border-zinc-800 dark:bg-zinc-950 ${mobileOpen ? 'max-h-96 opacity-100' : 'pointer-events-none max-h-0 overflow-hidden opacity-0'}`} id="mobile-navigation">
+      <div
+        className={`border-t border-zinc-200/80 bg-white px-4 py-4 transition-all duration-300 md:hidden dark:border-zinc-800 dark:bg-zinc-950 ${mobileOpen ? 'max-h-96 opacity-100' : 'pointer-events-none max-h-0 overflow-hidden opacity-0'}`}
+        id="mobile-navigation"
+        aria-hidden={!mobileOpen}
+      >
         <nav className="section-shell flex flex-col gap-4" aria-label="Mobile navigation">
-          {links.map((link) => (
+          {links.map((link, idx) => (
             <a
               key={link.href}
               href={link.href}
               className={`text-base font-medium ${activeSection === link.href.slice(1) ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-500 dark:text-zinc-400'}`}
               onClick={() => setMobileOpen(false)}
+              tabIndex={mobileOpen ? 0 : -1}
+              ref={idx === 0 ? firstMobileLinkRef : undefined}
             >
               {link.label}
             </a>

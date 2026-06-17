@@ -39,7 +39,8 @@ export default function Contact() {
                   key={link.label}
                   href={link.href}
                   target={link.label === 'Email' ? undefined : '_blank'}
-                  rel={link.label === 'Email' ? undefined : 'noreferrer'}
+                  rel={link.label === 'Email' ? undefined : 'noopener noreferrer'}
+                  aria-label={link.label}
                   className="glass-panel group rounded-[1.75rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-950 dark:hover:border-zinc-200 block"
                 >
                   <div className="flex flex-col items-center text-center gap-4">

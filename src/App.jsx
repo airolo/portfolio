@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import About from './components/About';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
-import FloatingChatbot from './components/FloatingChatbot';
+const FloatingChatbot = lazy(() => import('./components/FloatingChatbot'));
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
@@ -42,7 +42,9 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingChatbot />
+      <Suspense fallback={null}>
+        <FloatingChatbot />
+      </Suspense>
     </div>
   );
 }

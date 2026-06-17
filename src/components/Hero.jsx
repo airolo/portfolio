@@ -1,7 +1,17 @@
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDownRight } from 'react-icons/fi';
+import CvModal from './CvModal';
 
 export default function Hero() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const cvButtonRef = useRef(null);
+
+  const closeModal = () => {
+    setModalOpen(false);
+    cvButtonRef.current?.focus();
+  };
+
   return (
     <section id="home" className="scroll-mt-24 border-b border-zinc-200/70 dark:border-zinc-800">
       <div className="section-shell grid min-h-[calc(100vh-5rem)] items-center py-20 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
@@ -50,6 +60,15 @@ export default function Hero() {
             <a href="#contact" className="btn-secondary">
               Contact Me
             </a>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => setModalOpen(true)}
+              ref={cvButtonRef}
+            >
+              View CV
+            </button>
+            <CvModal open={modalOpen} onClose={() => setModalOpen(false)} />
           </motion.div>
         </div>
 
@@ -59,26 +78,14 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
           className="mt-14 lg:mt-0"
         >
-          <div className="glass-panel rounded-[2rem] p-8 sm:p-10">
-            <div className="flex items-center justify-between border-b border-zinc-200 pb-5 dark:border-zinc-800">
-              <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Focused on delivery</span>
-              <span className="text-sm font-medium text-zinc-950 dark:text-zinc-50">Secure by design</span>
-            </div>
-            <div className="space-y-6 py-8">
-              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
-                <p className="text-sm uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400">Core strength</p>
-                <p className="mt-3 text-2xl font-semibold text-zinc-950 dark:text-zinc-50">Full-stack problem solving</p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Frontend</p>
-                  <p className="mt-2 text-xl font-semibold">Elegant interfaces</p>
-                </div>
-                <div className="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Backend</p>
-                  <p className="mt-2 text-xl font-semibold">Reliable systems</p>
-                </div>
-              </div>
+          <div className="glass-panel rounded-[2rem] p-5 sm:p-6">
+            <div className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+              <img
+                src="/temp-hero-placeholder.jpg"
+                alt="Temporary profile placeholder"
+                className="h-[26rem] w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 to-transparent" />
             </div>
           </div>
         </motion.div>
@@ -86,3 +93,4 @@ export default function Hero() {
     </section>
   );
 }
+

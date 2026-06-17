@@ -15,12 +15,24 @@ export default function FloatingChatbot() {
   const [messages, setMessages] = useState([createMessage('assistant', chatbotKnowledge.greeting)]);
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   const quickReplies = useMemo(() => chatbotQuickActions, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, open]);
+
+  useEffect(() => {
+    if (open) {
+      // focus the input when opening
+      inputRef.current?.focus();
+    } else {
+      // return focus to the toggle button when closed
+      toggleButtonRef.current?.focus();
+    }
+  }, [open]);
 
   const getReply = (userText) => {
     const normalizedText = userText.toLowerCase();
@@ -64,6 +76,9 @@ export default function FloatingChatbot() {
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.2 }}
             className="mb-4 w-[calc(100vw-2.5rem)] max-w-sm overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950"
+            role="dialog"
+            aria-modal="false"
+            aria-label="Portfolio assistant"
           >
             <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
               <div>
@@ -80,7 +95,7 @@ export default function FloatingChatbot() {
               </button>
             </div>
 
-            <div className="max-h-[28rem] space-y-4 overflow-y-auto px-5 py-4">
+              <div className="max-h-[28rem] space-y-4 overflow-y-auto px-5 py-4" role="log" aria-live="polite">
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === 'user' ? 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' : 'bg-zinc-100 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200'}`}>
@@ -119,6 +134,7 @@ export default function FloatingChatbot() {
                   onChange={(event) => setInputValue(event.target.value)}
                   placeholder="Ask a question..."
                   aria-label="Chat message"
+                  ref={inputRef}
                 />
                 <button
                   type="submit"
@@ -138,6 +154,7 @@ export default function FloatingChatbot() {
         onClick={() => setOpen((current) => !current)}
         className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-950 shadow-lg transition hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:hover:border-zinc-200"
         aria-label={open ? 'Close chatbot' : 'Open chatbot'}
+        ref={toggleButtonRef}
       >
         <FiMessageCircle size={22} />
       </button>

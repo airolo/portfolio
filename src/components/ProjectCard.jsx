@@ -19,10 +19,10 @@ export default function ProjectCard({ project }) {
         </ul>
 
         <div className="mt-8 flex flex-wrap gap-4 pt-2">
-          <a className="inline-flex items-center gap-2 text-sm font-medium text-zinc-950 transition hover:opacity-70 dark:text-zinc-50" href={project.github} target="_blank" rel="noreferrer">
+          <a className="inline-flex items-center gap-2 text-sm font-medium text-zinc-950 transition hover:opacity-70 dark:text-zinc-50" href={project.github} target="_blank" rel="noopener noreferrer">
             <FiGithub /> GitHub
           </a>
-          <a className="inline-flex items-center gap-2 text-sm font-medium text-zinc-950 transition hover:opacity-70 dark:text-zinc-50" href={project.live} target="_blank" rel="noreferrer">
+          <a className="inline-flex items-center gap-2 text-sm font-medium text-zinc-950 transition hover:opacity-70 dark:text-zinc-50" href={project.live} target="_blank" rel="noopener noreferrer">
             <FiExternalLink /> Live Demo
           </a>
         </div>

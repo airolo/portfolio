@@ -42,6 +42,7 @@ export const skills = [
     items: [
       { name: 'PHP', icon: SiPhp, description: 'Creating server-side workflows and application logic.' },
       { name: 'Node.js', icon: SiNodedotjs, description: 'Running JavaScript on the server for APIs and tooling.' },
+      { name: 'Supabase', icon: SiSupabase, description: 'Using a backend platform for auth, database, and APIs.' },
     ],
   },
   {
