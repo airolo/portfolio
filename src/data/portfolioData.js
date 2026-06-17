@@ -12,6 +12,8 @@ import {
   SiReact,
   SiTailwindcss,
   SiSupabase,
+  SiTypescript,
+  SiGithubcopilot,
 } from 'react-icons/si';
 import { FiCode } from 'react-icons/fi';
 
@@ -32,6 +34,7 @@ export const skills = [
       { name: 'JavaScript', icon: SiJavascript, description: 'Adding behavior, interactivity, and dynamic logic.' },
       { name: 'React', icon: SiReact, description: 'Composing reusable UI with component-driven architecture.' },
       { name: 'Tailwind CSS', icon: SiTailwindcss, description: 'Designing quickly with utility-first styling.' },
+      { name: 'Typescript', icon: SiTypescript, description: 'Adding static typing to JavaScript for better code quality.' },
     ],
   },
   {
@@ -55,6 +58,7 @@ export const skills = [
       { name: 'Git', icon: SiGit, description: 'Tracking changes and coordinating version control.' },
       { name: 'GitHub', icon: SiGithub, description: 'Hosting code, collaboration, and project workflows.' },
       { name: 'VS Code', icon: FiCode, description: 'Writing and debugging code in a fast editor.' },
+      { name: 'GitHub Copilot', icon: SiGithubcopilot, description: 'AI pair programming assistant.' },
     ],
   },
 ];
