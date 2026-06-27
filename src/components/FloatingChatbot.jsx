@@ -80,10 +80,17 @@ export default function FloatingChatbot() {
             aria-modal="false"
             aria-label="Portfolio assistant"
           >
-            <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
-              <div>
-                <p className="text-sm font-semibold text-zinc-950 dark:text-zinc-50">Portfolio Assistant</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">Rule-based responses</p>
+            <div className="flex items-center justify-between gap-4 border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
+              <div className="flex min-w-0 items-center gap-3">
+                <img
+                  src="/temp-hero-placeholder.jpg"
+                  alt="Bradley Soloria"
+                  className="h-11 w-11 shrink-0 rounded-full border border-zinc-200 object-cover dark:border-zinc-800"
+                />
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-zinc-950 dark:text-zinc-50">Bradley Soloria</p>
+                  
+                </div>
               </div>
               <button
                 type="button"

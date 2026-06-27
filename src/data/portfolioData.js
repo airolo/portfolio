@@ -50,7 +50,7 @@ export const skills = [
     items: [
       { name: 'MySQL', icon: SiMysql, description: 'Managing relational data with structured queries.' },
       { name: 'PostgreSQL', icon: SiPostgresql, description: 'Working with reliable relational storage and SQL features.' },
-      { name: 'Supabase', icon: SiSupabase, description: 'Using a backend platform for auth, database, and APIs.' },
+      
     ],
   },
   {
@@ -121,7 +121,7 @@ export const chatbotQuickActions = [
 
 export const chatbotKnowledge = {
   greeting:
-    "Hi! I'm your portfolio assistant. Ask me anything about my projects, skills, or contact information.",
+    "Hi! I'm Bradley Soloria. Ask me anything about my projects, skills, or contact information.",
   responses: [
     {
       match: ['tell me about yourself', 'about yourself', 'who are you'],
