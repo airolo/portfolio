@@ -8,8 +8,8 @@ export default function Skills() {
       <div className="section-shell">
         <SectionHeading
           eyebrow="Skills"
-          title="A focused stack, collected into one card."
-          description=""
+          title="A compact stack for full-stack delivery."
+          description="The tools I use most often, grouped by how they support the build."
         />
 
         <div className="mt-12">

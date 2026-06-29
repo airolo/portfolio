@@ -66,22 +66,11 @@ export const skills = [
 
 export const projects = [
   {
-    title: 'MySchedMate',
-    description: 'A Capstone Project for student assistant management system with QR attendance tracking, role-based workflows, and clean scheduling tools.',
-    stack: ['PHP', 'Tailwind CSS', 'MySQL', 'QR Attendance'],
-    github: 'https://github.com/',
-    live: 'https://example.com/',
-  },
-  {
-    title: 'Bounce Academy',
-    description: 'A basketball apparel e-commerce platform focused on product discovery, cart flow, and a premium monochrome storefront.',
-    stack: ['React', 'JavaScript', 'Tailwind CSS', 'Supabase', 'E-commerce'],
-    github: 'https://github.com/',
-    live: 'https://example.com/',
-  },
-  {
     title: 'Health Sciences Library Portal',
-    description: 'Developed a full-stack e-commerce web app using React and Supabase, leveraging GitHub Copilot to accelerate development while manually designing system architecture, database schema, and business logic.',
+    type: 'Featured full-stack web-app',
+    image: '/health-sciences-library-portal-preview.png',
+    featured: true,
+    description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable. Built with React, Supabase, and Tailwind CSS. ',
     stack: ['React', 'Typescript', 'Supabase', 'Tailwind CSS'],
     github: 'https://github.com/airolo/hs-library-portal',
     live: 'https://hs-library-portal.vercel.app/login',
@@ -136,7 +125,7 @@ export const chatbotKnowledge = {
     {
       match: ['show me your projects', 'projects', 'portfolio projects'],
       reply:
-        'I have featured MySchedMate, Bounce Academy, and Library Portal System. Use the Projects section to explore each one.',
+        'My featured project is the Health Sciences Library Portal, a full-stack React and Supabase web app. Use the Projects section to explore it.',
     },
     {
       match: ['how can i contact you', 'contact', 'email', 'linkedin', 'github'],
