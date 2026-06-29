@@ -10,10 +10,43 @@ const createMessage = (role, text) => ({
   time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
 });
 
+const panelVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.94, transformOrigin: 'bottom right' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 420,
+      damping: 32,
+      mass: 0.85,
+      staggerChildren: 0.045,
+      delayChildren: 0.06,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: 18,
+    scale: 0.96,
+    transition: { duration: 0.16, ease: 'easeInOut' },
+  },
+};
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.22, ease: 'easeOut' },
+  },
+};
+
 export default function FloatingChatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([createMessage('assistant', chatbotKnowledge.greeting)]);
   const [inputValue, setInputValue] = useState('');
+  const [isReplying, setIsReplying] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const toggleButtonRef = useRef(null);
@@ -45,25 +78,24 @@ export default function FloatingChatbot() {
 
   const sendMessage = (text) => {
     const trimmed = text.trim();
-    if (!trimmed) {
+    if (!trimmed || isReplying) {
       return;
     }
 
-    setMessages((current) => [
-      ...current,
-      createMessage('user', trimmed),
-      createMessage('assistant', getReply(trimmed)),
-    ]);
+    setMessages((current) => [...current, createMessage('user', trimmed)]);
     setInputValue('');
+    setIsReplying(true);
+    inputRef.current?.focus();
+
+    window.setTimeout(() => {
+      setMessages((current) => [...current, createMessage('assistant', getReply(trimmed))]);
+      setIsReplying(false);
+      inputRef.current?.focus();
+    }, 450);
   };
 
-  const handleQuickAction = (label) => {
-    if (label === 'Resume') {
-      sendMessage('Can I download your resume?');
-      return;
-    }
-
-    sendMessage(label);
+  const handleQuickAction = (action) => {
+    sendMessage(action.prompt ?? action.label);
   };
 
   return (
@@ -71,16 +103,16 @@ export default function FloatingChatbot() {
       <AnimatePresence>
         {open ? (
           <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.96 }}
-            transition={{ duration: 0.2 }}
+            variants={panelVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="mb-4 w-[calc(100vw-2.5rem)] max-w-sm overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950"
             role="dialog"
             aria-modal="false"
             aria-label="Portfolio assistant"
           >
-            <div className="flex items-center justify-between gap-4 border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
+            <motion.div variants={sectionVariants} className="flex items-center justify-between gap-4 border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
               <div className="flex min-w-0 items-center gap-3">
                 <img
                   src="/temp-hero-placeholder.jpg"
@@ -100,27 +132,35 @@ export default function FloatingChatbot() {
               >
                 <FiX />
               </button>
-            </div>
+            </motion.div>
 
-              <div className="max-h-[28rem] space-y-4 overflow-y-auto px-5 py-4" role="log" aria-live="polite">
+            <motion.div variants={sectionVariants} className="h-[15rem] space-y-4 overflow-y-auto px-5 py-4" role="log" aria-live="polite">
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === 'user' ? 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' : 'bg-zinc-100 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200'}`}>
+                  <div className={`max-w-[80%] overflow-hidden break-words rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === 'user' ? 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' : 'bg-zinc-100 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200'}`}>
                     <p>{message.text}</p>
                     <p className="mt-2 text-[11px] opacity-60">{message.time}</p>
                   </div>
                 </div>
               ))}
+              {isReplying ? (
+                <div className="flex justify-start">
+                  <div className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-zinc-500 dark:bg-zinc-900 dark:text-zinc-400">
+                    Bradley is replying...
+                  </div>
+                </div>
+              ) : null}
               <div ref={messagesEndRef} />
-            </div>
+            </motion.div>
 
-            <div className="border-t border-zinc-200 px-5 py-4 dark:border-zinc-800">
+            <motion.div variants={sectionVariants} className="border-t border-zinc-200 px-5 py-4 dark:border-zinc-800">
               <div className="flex flex-wrap gap-2">
                 {quickReplies.map((action) => (
                   <button
                     key={action.label}
                     type="button"
-                    onClick={() => handleQuickAction(action.label)}
+                    onClick={() => handleQuickAction(action)}
+                    disabled={isReplying}
                     className="rounded-full border border-zinc-200 px-3 py-1.5 text-xs font-medium text-zinc-700 transition hover:border-zinc-950 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-200 dark:hover:text-zinc-50"
                   >
                     {action.label}
@@ -142,29 +182,33 @@ export default function FloatingChatbot() {
                   placeholder="Ask a question..."
                   aria-label="Chat message"
                   ref={inputRef}
+                  disabled={isReplying}
                 />
                 <button
                   type="submit"
+                  disabled={isReplying || !inputValue.trim()}
                   className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-zinc-950 text-white transition hover:-translate-y-0.5 hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
                   aria-label="Send message"
                 >
                   <FiSend />
                 </button>
               </form>
-            </div>
+            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
 
-      <button
+      <motion.button
         type="button"
         onClick={() => setOpen((current) => !current)}
+        animate={{ rotate: open ? 8 : 0, scale: open ? 0.96 : 1 }}
+        transition={{ type: 'spring', stiffness: 420, damping: 24 }}
         className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-950 shadow-lg transition hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:hover:border-zinc-200"
         aria-label={open ? 'Close chatbot' : 'Open chatbot'}
         ref={toggleButtonRef}
       >
         <FiMessageCircle size={22} />
-      </button>
+      </motion.button>
     </div>
   );
 }

@@ -112,11 +112,11 @@ export const experience = [
 ];
 
 export const chatbotQuickActions = [
-  { label: 'About Me', target: 'about' },
-  { label: 'Skills', target: 'skills' },
-  { label: 'Projects', target: 'projects' },
-  { label: 'Resume', target: 'resume' },
-  { label: 'Contact', target: 'contact' },
+  { label: 'About Me', target: 'about', prompt: 'Tell me about yourself' },
+  { label: 'Skills', target: 'skills', prompt: 'What technologies do you use?' },
+  { label: 'Projects', target: 'projects', prompt: 'Show me your projects' },
+  { label: 'Resume', target: 'resume', prompt: 'Can I download your resume?' },
+  { label: 'Contact', target: 'contact', prompt: 'How can I contact you?' },
 ];
 
 export const chatbotKnowledge = {
@@ -124,7 +124,7 @@ export const chatbotKnowledge = {
     "Hi! I'm Bradley Soloria. Ask me anything about my projects, skills, or contact information.",
   responses: [
     {
-      match: ['tell me about yourself', 'about yourself', 'who are you'],
+      match: ['tell me about yourself', 'about yourself', 'about me', 'who are you'],
       reply:
         'I am an Information Technology Software Engineer focused on building clean, secure, and scalable systems with a minimalist product mindset.',
     },
@@ -146,7 +146,7 @@ export const chatbotKnowledge = {
     {
       match: ['can i download your resume', 'resume', 'cv'],
       reply:
-        'A downloadable resume can be added in the Resume quick action area. For now, please use the Contact section to request it.',
+        'Yes. You can open the CV preview from the hero section and download my resume there.',
     },
   ],
 };
