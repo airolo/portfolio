@@ -1,4 +1,4 @@
-# IT Software Engineer Portfolio
+# IT Full-Stack Developer Portfolio
 
 A one-page portfolio built with React, Vite, Tailwind CSS, React Icons, and Framer Motion.
 
