@@ -21,21 +21,21 @@ export default function CvModal({ open, onClose }) {
   if (!open || typeof document === 'undefined') return null;
 
   const modal = (
-    <div style={{ zIndex: 9999 }} className="fixed inset-0 flex items-center justify-center">
+    <div style={{ zIndex: 9999 }} className="fixed inset-0 flex items-center justify-center p-3 sm:p-4">
       <div className="fixed inset-0 bg-black/40" onClick={onClose} aria-hidden="true" />
 
       <div
         role="dialog"
         aria-modal="true"
         aria-label="CV preview"
-        className="relative mx-4 max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-xl bg-white shadow-2xl dark:bg-zinc-900"
+        className="relative max-h-[92svh] w-full max-w-4xl overflow-hidden rounded-xl bg-white shadow-2xl dark:bg-zinc-900"
       >
-        <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
+        <div className="flex flex-col gap-3 border-b border-zinc-200 px-4 py-3 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
           <h3 className="text-sm font-semibold text-zinc-950 dark:text-zinc-50">Curriculum Vitae</h3>
-          <div className="flex items-center gap-2">
+          <div className="grid gap-2 sm:flex sm:items-center">
             <a
               href="/resume.pdf"
-              className="btn-secondary mr-2"
+              className="btn-secondary w-full sm:w-auto"
               target="_blank"
               rel="noopener noreferrer"
               download
@@ -45,7 +45,7 @@ export default function CvModal({ open, onClose }) {
             <button
               ref={closeBtnRef}
               onClick={onClose}
-              className="inline-flex h-9 items-center justify-center rounded-md border border-zinc-200 px-3 py-1 text-sm dark:border-zinc-800"
+              className="inline-flex h-10 items-center justify-center rounded-md border border-zinc-200 px-3 py-1 text-sm dark:border-zinc-800"
               aria-label="Close CV preview"
             >
               Close
@@ -53,7 +53,7 @@ export default function CvModal({ open, onClose }) {
           </div>
         </div>
 
-        <div className="h-[80vh] max-h-[80vh] w-full">
+        <div className="h-[70svh] w-full sm:h-[80vh]">
           <iframe
             src="/resume.pdf"
             title="Resume preview"

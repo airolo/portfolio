@@ -49,9 +49,9 @@ export default function Contact() {
           description=""
         />
 
-        <div className="mx-auto mt-12 grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-8">
           <div className="space-y-5">
-            <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
+            <div className="glass-panel rounded-[1.5rem] p-5 sm:rounded-[2rem] sm:p-8">
               <p className="section-label">Quick Links</p>
               <div className="mt-5 grid gap-4">
                 {contactLinks.map((link) => {
@@ -63,14 +63,14 @@ export default function Contact() {
                       target={link.label === 'Email' ? undefined : '_blank'}
                       rel={link.label === 'Email' ? undefined : 'noopener noreferrer'}
                       aria-label={link.label}
-                      className="group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-4 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-200"
+                      className="group flex min-w-0 items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-4 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-200"
                     >
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-50 text-zinc-950 transition group-hover:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50 dark:group-hover:border-zinc-200">
                         <Icon size={18} />
                       </span>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-sm font-semibold text-zinc-950 dark:text-zinc-50">{link.label}</p>
-                        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+                        <p className="mt-1 break-words text-sm text-zinc-500 dark:text-zinc-400">
                           {link.label === 'Email' ? gmailAddress : link.href.replace(/^https?:\/\//, '')}
                         </p>
                       </div>
@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
+          <div className="glass-panel rounded-[1.5rem] p-5 sm:rounded-[2rem] sm:p-8">
             <div className="mb-8">
               <p className="section-label">Direct Message</p>
               

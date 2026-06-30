@@ -58,8 +58,9 @@ export const skills = [
     items: [
       { name: 'Git', icon: SiGit, description: 'Tracking changes and coordinating version control.' },
       { name: 'GitHub', icon: SiGithub, description: 'Hosting code, collaboration, and project workflows.' },
-      { name: 'VS Code', icon: FiCode, description: 'Writing and debugging code in a fast editor.' },
       { name: 'GitHub Copilot', icon: SiGithubcopilot, description: 'AI pair programming assistant.' },
+      { name: 'VS Code', icon: FiCode, description: 'Writing and debugging code in a fast editor.' },
+      
     ],
   },
 ];
@@ -70,7 +71,7 @@ export const projects = [
     type: 'Featured full-stack web-app',
     image: '/health-sciences-library-portal-preview.png',
     featured: true,
-    description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable. Built with React, Supabase, and Tailwind CSS. ',
+    description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable. Built with React, Supabase, and Tailwind CSS.',
     stack: ['React', 'Typescript', 'Supabase', 'Tailwind CSS'],
     github: 'https://github.com/airolo/hs-library-portal',
     live: 'https://hs-library-portal.vercel.app/login',
@@ -110,7 +111,7 @@ export const chatbotQuickActions = [
 
 export const chatbotKnowledge = {
   greeting:
-    "Hi! I'm Bradley Soloria. Ask me anything about my projects, skills, or contact information.",
+    "Hi! I'm Bradley. Ask me anything about my projects, skills, or contact information.",
   responses: [
     {
       match: ['tell me about yourself', 'about yourself', 'about me', 'who are you'],

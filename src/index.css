@@ -32,6 +32,14 @@ body {
   background: rgb(var(--page-bg));
   color: rgb(var(--page-fg));
   font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
 }
 
 ::selection {
@@ -49,7 +57,7 @@ body {
   }
 
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500 dark:text-zinc-400;
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400 sm:tracking-[0.35em];
   }
 
   .section-title {
@@ -69,11 +77,11 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-zinc-950 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 sm:px-6;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300 bg-transparent px-6 py-3 text-sm font-medium text-zinc-950 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-zinc-300 bg-transparent px-5 py-3 text-sm font-medium text-zinc-950 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200 sm:px-6;
   }
 }
 

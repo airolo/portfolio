@@ -2,10 +2,10 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi';
 
 export default function ProjectCard({ project, featured = false }) {
   return (
-    <article className={`group glass-panel overflow-hidden rounded-[1.75rem] transition-all duration-300 hover:-translate-y-1 hover:border-zinc-950 dark:hover:border-zinc-200 ${featured ? 'lg:grid lg:grid-cols-[1.1fr_0.9fr]' : ''}`}>
-      <div className={`relative min-h-[16rem] overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950 ${featured ? 'lg:min-h-[24rem] lg:border-b-0 lg:border-r' : ''}`}>
+    <article className={`group glass-panel overflow-hidden rounded-[1.5rem] transition-all duration-300 hover:-translate-y-1 hover:border-zinc-950 dark:hover:border-zinc-200 sm:rounded-[1.75rem] ${featured ? 'xl:grid xl:grid-cols-[1.1fr_0.9fr]' : ''}`}>
+      <div className={`relative min-h-[14rem] overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950 sm:min-h-[18rem] ${featured ? 'xl:min-h-[24rem] xl:border-b-0 xl:border-r' : ''}`}>
         {project.image ? (
-          <div className="absolute inset-5 flex items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-[#eef6ff] shadow-soft dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="absolute inset-3 flex items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-[#eef6ff] shadow-soft dark:border-zinc-800 dark:bg-zinc-900 sm:inset-5">
             <img
               src={project.image}
               alt={`${project.title} preview`}
@@ -23,7 +23,7 @@ export default function ProjectCard({ project, featured = false }) {
 
             <div className="grid h-[calc(100%-2.5rem)] grid-rows-[auto_1fr] p-5">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">{project.type}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 sm:tracking-[0.24em] dark:text-zinc-400">{project.type}</p>
                 <h4 className="mt-3 max-w-sm text-xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">{project.preview}</h4>
               </div>
 
@@ -44,10 +44,10 @@ export default function ProjectCard({ project, featured = false }) {
         )}
       </div>
 
-      <div className="flex h-full flex-col p-7">
+      <div className="flex h-full flex-col p-5 sm:p-7">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400">{featured ? 'Featured project' : project.type}</p>
-          <h3 className="mt-4 text-2xl font-semibold tracking-tight">{project.title}</h3>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 sm:tracking-[0.3em] dark:text-zinc-400">{featured ? 'Featured project' : project.type}</p>
+          <h3 className="mt-4 text-xl font-semibold tracking-tight sm:text-2xl">{project.title}</h3>
           <p className="mt-4 text-sm leading-7 text-zinc-600 dark:text-zinc-300">{project.description}</p>
         </div>
 
@@ -59,11 +59,11 @@ export default function ProjectCard({ project, featured = false }) {
           ))}
         </ul>
 
-        <div className="mt-auto flex flex-wrap gap-4 pt-8">
-          <a className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200" href={project.github} target="_blank" rel="noopener noreferrer">
+        <div className="mt-auto grid gap-3 pt-8 sm:flex sm:flex-wrap sm:gap-4">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200" href={project.github} target="_blank" rel="noopener noreferrer">
             <FiGithub /> GitHub
           </a>
-          <a className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200" href={project.live} target="_blank" rel="noopener noreferrer">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200" href={project.live} target="_blank" rel="noopener noreferrer">
             <FiExternalLink /> Live Demo
           </a>
         </div>

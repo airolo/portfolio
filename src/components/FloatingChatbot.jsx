@@ -99,7 +99,7 @@ export default function FloatingChatbot() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div className="fixed inset-x-4 bottom-4 z-50 flex flex-col items-end sm:inset-x-auto sm:bottom-5 sm:right-5">
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -107,12 +107,12 @@ export default function FloatingChatbot() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="mb-4 w-[calc(100vw-2.5rem)] max-w-sm overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950"
+            className="mb-4 max-h-[calc(100svh-6rem)] w-full max-w-sm overflow-hidden rounded-[1.5rem] border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 sm:rounded-[1.75rem]"
             role="dialog"
             aria-modal="false"
             aria-label="Portfolio assistant"
           >
-            <motion.div variants={sectionVariants} className="flex items-center justify-between gap-4 border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
+            <motion.div variants={sectionVariants} className="flex items-center justify-between gap-4 border-b border-zinc-200 px-4 py-3 dark:border-zinc-800 sm:px-5 sm:py-4">
               <div className="flex min-w-0 items-center gap-3">
                 <img
                   src="/temp-hero-placeholder.jpg"
@@ -134,7 +134,7 @@ export default function FloatingChatbot() {
               </button>
             </motion.div>
 
-            <motion.div variants={sectionVariants} className="h-[15rem] space-y-4 overflow-y-auto px-5 py-4" role="log" aria-live="polite">
+            <motion.div variants={sectionVariants} className="h-[13rem] space-y-4 overflow-y-auto px-4 py-4 sm:h-[15rem] sm:px-5" role="log" aria-live="polite">
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[80%] overflow-hidden break-words rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === 'user' ? 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' : 'bg-zinc-100 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200'}`}>
@@ -153,7 +153,7 @@ export default function FloatingChatbot() {
               <div ref={messagesEndRef} />
             </motion.div>
 
-            <motion.div variants={sectionVariants} className="border-t border-zinc-200 px-5 py-4 dark:border-zinc-800">
+            <motion.div variants={sectionVariants} className="border-t border-zinc-200 px-4 py-4 dark:border-zinc-800 sm:px-5">
               <div className="flex flex-wrap gap-2">
                 {quickReplies.map((action) => (
                   <button
