@@ -9,12 +9,12 @@ const contactLinks = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/bradley-soloria-ba64423b8/',
+    href: 'https://www.linkedin.com/in/bradleysoloria/',
     icon: FiLinkedin,
   },
   {
     label: 'Email',
-    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=razogodfrey18@gmail.com',
+    href: 'mailto:razogodfrey18@gmail.com',
     icon: FiMail,
   },
 ];
@@ -35,9 +35,7 @@ export default function Contact() {
       [`Name: ${name || 'Not provided'}`, `Email: ${email || 'Not provided'}`, '', message || ''].join('\n')
     );
 
-    window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      gmailAddress
-    )}&su=${subject}&body=${body}`;
+    window.location.href = `mailto:${encodeURIComponent(gmailAddress)}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -84,7 +82,6 @@ export default function Contact() {
           <div className="glass-panel rounded-[1.5rem] p-5 sm:rounded-[2rem] sm:p-8">
             <div className="mb-8">
               <p className="section-label">Direct Message</p>
-              
             </div>
             <form className="grid gap-5" onSubmit={handleSubmit}>
               <label className="grid gap-2">
@@ -121,7 +118,6 @@ export default function Contact() {
               </label>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
-              
                 <button type="submit" className="btn-primary w-full sm:w-auto">
                   Send Message
                 </button>

@@ -4,30 +4,43 @@ export default function useActiveSection(sectionIds) {
   const [activeSection, setActiveSection] = useState(sectionIds[0] ?? '');
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const resolveActiveSection = () => {
+      const triggerPoint = window.innerHeight * 0.35;
+      let currentSection = sectionIds[0] ?? '';
 
-        if (visibleEntry?.target?.id) {
-          setActiveSection(visibleEntry.target.id);
+      sectionIds.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+
+        if (!element) {
+          return;
         }
-      },
-      {
-        rootMargin: '-35% 0px -50% 0px',
-        threshold: [0.15, 0.3, 0.5, 0.7],
-      },
-    );
 
-    sectionIds.forEach((sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        observer.observe(element);
-      }
-    });
+        const { top } = element.getBoundingClientRect();
 
-    return () => observer.disconnect();
+        if (top <= triggerPoint) {
+          currentSection = sectionId;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    let frameId = 0;
+
+    const handleScroll = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(resolveActiveSection);
+    };
+
+    resolveActiveSection();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [sectionIds]);
 
   return activeSection;

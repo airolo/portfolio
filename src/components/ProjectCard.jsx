@@ -5,11 +5,11 @@ export default function ProjectCard({ project, featured = false }) {
     <article className={`group glass-panel overflow-hidden rounded-[1.5rem] transition-all duration-300 hover:-translate-y-1 hover:border-zinc-950 dark:hover:border-zinc-200 sm:rounded-[1.75rem] ${featured ? 'xl:grid xl:grid-cols-[1.1fr_0.9fr]' : ''}`}>
       <div className={`relative min-h-[14rem] overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950 sm:min-h-[18rem] ${featured ? 'xl:min-h-[24rem] xl:border-b-0 xl:border-r' : ''}`}>
         {project.image ? (
-          <div className="absolute inset-3 flex items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-[#eef6ff] shadow-soft dark:border-zinc-800 dark:bg-zinc-900 sm:inset-5">
+          <div className="absolute inset-3 overflow-hidden rounded-2xl border border-zinc-200 bg-[#eef6ff] shadow-soft dark:border-zinc-800 dark:bg-[#eef6ff] sm:inset-5">
             <img
               src={project.image}
               alt={`${project.title} preview`}
-              className="h-full w-full object-contain object-center p-2 transition duration-500 group-hover:scale-[1.01] sm:p-3"
+              className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.01]"
             />
           </div>
         ) : (
@@ -24,7 +24,7 @@ export default function ProjectCard({ project, featured = false }) {
             <div className="grid h-[calc(100%-2.5rem)] grid-rows-[auto_1fr] p-5">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 sm:tracking-[0.24em] dark:text-zinc-400">{project.type}</p>
-                <h4 className="mt-3 max-w-sm text-xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">{project.preview}</h4>
+                <h4 className="mt-3 max-w-sm text-xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">{project.title}</h4>
               </div>
 
               <div className="mt-6 grid grid-cols-[0.8fr_1.2fr] gap-4">

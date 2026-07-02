@@ -29,11 +29,13 @@ export default function SkillCard({ title, groups }) {
                   return (
                     <li key={item.name}>
                       <span
-                        className="inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-700 transition hover:border-zinc-950 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-200 dark:hover:bg-zinc-950"
-                        title={item.description}
+                        className="group inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-700 transition hover:border-zinc-950 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-200 dark:hover:bg-zinc-950"
                       >
-                        <span className="text-zinc-950 dark:text-zinc-50">
+                        <span className="relative inline-flex items-center text-zinc-950 dark:text-zinc-50">
                           <Icon size={14} />
+                          <span className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-max max-w-[14rem] -translate-x-1/2 translate-y-1 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-[11px] leading-5 text-zinc-600 opacity-0 shadow-lg transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
+                            {item.description}
+                          </span>
                         </span>
                         {item.name}
                       </span>

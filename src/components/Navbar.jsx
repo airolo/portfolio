@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
 
-export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
+export default function Navbar({ links, activeSection, theme, onToggleTheme, onSectionClick }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleButtonRef = useRef(null);
   const firstMobileLinkRef = useRef(null);
+  const didMountRef = useRef(false);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -23,10 +24,12 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
     if (mobileOpen) {
       // focus first link in mobile nav when opened
       firstMobileLinkRef.current?.focus();
-    } else {
+    } else if (didMountRef.current) {
       // restore focus to the toggle button when closed
       toggleButtonRef.current?.focus();
     }
+
+    didMountRef.current = true;
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -49,7 +52,12 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className={`nav-link ${activeSection === link.href.slice(1) ? 'nav-link-active' : ''}`}>
+            <a
+              key={link.href}
+              href={link.href}
+              className={`nav-link ${activeSection === link.href.slice(1) ? 'nav-link-active' : ''}`}
+              onClick={() => onSectionClick?.(link.href.slice(1))}
+            >
               {link.label}
             </a>
           ))}
@@ -82,7 +90,10 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme }) {
               key={link.href}
               href={link.href}
               className={`text-base font-medium ${activeSection === link.href.slice(1) ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-500 dark:text-zinc-400'}`}
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {
+                onSectionClick?.(link.href.slice(1));
+                setMobileOpen(false);
+              }}
               tabIndex={mobileOpen ? 0 : -1}
               ref={idx === 0 ? firstMobileLinkRef : undefined}
             >
