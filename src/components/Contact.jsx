@@ -1,5 +1,7 @@
+import { useEffect, useRef, useState } from 'react';
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import SectionHeading from './SectionHeading';
+import ScrollReveal from './ScrollReveal';
 
 const contactLinks = [
   {
@@ -22,6 +24,17 @@ const contactLinks = [
 const gmailAddress = 'razogodfrey18@gmail.com';
 
 export default function Contact() {
+  const [successMessage, setSuccessMessage] = useState('');
+  const successTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current) {
+        window.clearTimeout(successTimerRef.current);
+      }
+    };
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -35,20 +48,33 @@ export default function Contact() {
       [`Name: ${name || 'Not provided'}`, `Email: ${email || 'Not provided'}`, '', message || ''].join('\n')
     );
 
+    setSuccessMessage('Message ready. Your email app should open now.');
+
+    if (successTimerRef.current) {
+      window.clearTimeout(successTimerRef.current);
+    }
+
+    successTimerRef.current = window.setTimeout(() => {
+      setSuccessMessage('');
+    }, 3500);
+
+    event.currentTarget.reset();
     window.location.href = `mailto:${encodeURIComponent(gmailAddress)}?subject=${subject}&body=${body}`;
   };
 
   return (
     <section id="contact" className="scroll-mt-24 py-24 sm:py-28">
       <div className="section-shell">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Reach out or send a direct message."
-          description=""
-        />
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow="Contact"
+            title="Reach out or send a direct message."
+            description=""
+          />
+        </ScrollReveal>
 
         <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-8">
-          <div className="space-y-5">
+          <ScrollReveal className="space-y-5">
             <div className="glass-panel rounded-[1.5rem] p-5 sm:rounded-[2rem] sm:p-8">
               <p className="section-label">Quick Links</p>
               <div className="mt-5 grid gap-4">
@@ -77,53 +103,66 @@ export default function Contact() {
                 })}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="glass-panel rounded-[1.5rem] p-5 sm:rounded-[2rem] sm:p-8">
-            <div className="mb-8">
-              <p className="section-label">Direct Message</p>
-            </div>
-            <form className="grid gap-5" onSubmit={handleSubmit}>
-              <label className="grid gap-2">
-                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Name</span>
-                <input
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Your name"
-                  className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-zinc-950 placeholder:text-zinc-400 transition focus:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-200"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Email</span>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@example.com"
-                  className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-zinc-950 placeholder:text-zinc-400 transition focus:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-200"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Message</span>
-                <textarea
-                  name="message"
-                  required
-                  rows={7}
-                  placeholder="Your Message..."
-                  className="w-full resize-none rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-zinc-950 placeholder:text-zinc-400 transition focus:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-200"
-                />
-              </label>
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
-                <button type="submit" className="btn-primary w-full sm:w-auto">
-                  Send Message
-                </button>
+          <ScrollReveal delay={0.08}>
+            <div className="glass-panel rounded-[1.5rem] p-5 sm:rounded-[2rem] sm:p-8">
+              <div className="mb-8">
+                <p className="section-label">Direct Message</p>
               </div>
-            </form>
-          </div>
+
+              {successMessage ? (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="mb-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/40 dark:text-emerald-300"
+                >
+                  {successMessage}
+                </div>
+              ) : null}
+
+              <form className="grid gap-5" onSubmit={handleSubmit}>
+                <label className="grid gap-2">
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Name</span>
+                  <input
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Your name"
+                    className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-zinc-950 placeholder:text-zinc-400 transition focus:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-200"
+                  />
+                </label>
+
+                <label className="grid gap-2">
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Email</span>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-zinc-950 placeholder:text-zinc-400 transition focus:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-200"
+                  />
+                </label>
+
+                <label className="grid gap-2">
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Message</span>
+                  <textarea
+                    name="message"
+                    required
+                    rows={7}
+                    placeholder="Your Message..."
+                    className="w-full resize-none rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-zinc-950 placeholder:text-zinc-400 transition focus:border-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-200"
+                  />
+                </label>
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
+                  <button type="submit" className="btn-primary w-full sm:w-auto">
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

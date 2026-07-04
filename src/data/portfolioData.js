@@ -71,8 +71,16 @@ export const projects = [
     type: 'Featured full-stack web-app',
     image: '/health-sciences-library-portal-preview.png',
     featured: true,
-    description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable. Built with React, Supabase, and Tailwind CSS.',
-    stack: ['React', 'Typescript', 'Supabase', 'Tailwind CSS'],
+    description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable.',
+    detailsDescription:
+      'A fallback portal designed to keep library services accessible when the main OPAC is unavailable. It focuses on continuity, clarity, and a simple user flow for students and staff who still need catalog access and library information. The portal is built with React for a responsive interface, Supabase for backend services, and Tailwind CSS for a consistent and fast UI design. The project emphasizes a clean, user-friendly experience, ensuring that essential library functions remain available even during system outages. The portal includes features such as user authentication, catalog search, and access to library resources, all while maintaining a lightweight and efficient design.',
+    stack: ['React', 'Typescript', 'Supabase', 'Tailwind CSS', 'Vercel'],
+    keyFeatures: [
+      'Fallback access to library information when the main OPAC is offline.',
+      'User authentication and role-based access for students and staff.',
+      'Responsive design for accessibility on various devices.',
+      'Search functionality for library catalog and resources.',
+    ],
     github: 'https://github.com/airolo/hs-library-portal',
     live: 'https://hs-library-portal.vercel.app/login',
   },
