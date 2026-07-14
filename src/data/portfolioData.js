@@ -32,9 +32,11 @@ export const skills = [
       { name: 'HTML', icon: SiHtml5, description: 'Structuring semantic, accessible page content.' },
       { name: 'CSS', icon: SiCss, description: 'Building responsive layouts and polished visual systems.' },
       { name: 'JavaScript', icon: SiJavascript, description: 'Adding behavior, interactivity, and dynamic logic.' },
+       { name: 'Typescript', icon: SiTypescript, description: 'Adding static typing to JavaScript for better code quality.' },
       { name: 'React', icon: SiReact, description: 'Composing reusable UI with component-driven architecture.' },
       { name: 'Tailwind CSS', icon: SiTailwindcss, description: 'Designing quickly with utility-first styling.' },
-      { name: 'Typescript', icon: SiTypescript, description: 'Adding static typing to JavaScript for better code quality.' },
+      { name: 'Bootstrap CSS', icon: SiTailwindcss, description: 'Building responsive layouts and polished visual systems.' },
+     
     ],
   },
   {
@@ -42,6 +44,7 @@ export const skills = [
     items: [
       { name: 'PHP', icon: SiPhp, description: 'Creating server-side workflows and application logic.' },
       { name: 'Node.js', icon: SiNodedotjs, description: 'Running JavaScript on the server for APIs and tooling.' },
+      { name: 'Express.js', icon: SiNodedotjs, description: 'Building web applications and APIs with a minimalist framework.' },
       { name: 'Supabase', icon: SiSupabase, description: 'Using a backend platform for auth, database, and APIs.' },
     ],
   },
@@ -50,16 +53,18 @@ export const skills = [
     items: [
       { name: 'MySQL', icon: SiMysql, description: 'Managing relational data with structured queries.' },
       { name: 'PostgreSQL', icon: SiPostgresql, description: 'Working with reliable relational storage and SQL features.' },
+      { name: 'NoSQL', icon: SiFirebase, description: 'Storing and retrieving unstructured data with flexible schemas.' },
       
     ],
   },
   {
     title: 'Tools',
     items: [
+      { name: 'VS Code', icon: FiCode, description: 'Writing and debugging code in a fast editor.' },
       { name: 'Git', icon: SiGit, description: 'Tracking changes and coordinating version control.' },
       { name: 'GitHub', icon: SiGithub, description: 'Hosting code, collaboration, and project workflows.' },
       { name: 'GitHub Copilot', icon: SiGithubcopilot, description: 'AI pair programming assistant.' },
-      { name: 'VS Code', icon: FiCode, description: 'Writing and debugging code in a fast editor.' },
+      { name: 'Codex', icon: FiCode, description: 'AI-powered code generation and assistance.' },
       
     ],
   },
@@ -77,13 +82,13 @@ export const projects = [
     stack: ['React', 'Typescript', 'Supabase', 'Tailwind CSS', 'Vercel'],
     keyFeatures: [
       'Fallback access to library information when the main OPAC is offline.',
-      'User authentication and role-based access for students and staff.',
       'Responsive design for accessibility on various devices.',
-      'Search functionality for library catalog and resources.',
+      'Reliable performance under typical usage scenarios.',
     ],
     github: 'https://github.com/airolo/hs-library-portal',
     live: 'https://hs-library-portal.vercel.app/login',
   },
+  
 ];
 
 export const experience = [
@@ -124,7 +129,7 @@ export const chatbotKnowledge = {
     {
       match: ['tell me about yourself', 'about yourself', 'about me', 'who are you'],
       reply:
-        'I am an Information Technology Software Engineer focused on building clean, secure, and scalable systems with a minimalist product mindset.',
+        'I am an Information Technology Full-Stack Developer focused on building clean, secure, and scalable systems with a minimalist product mindset.',
     },
     {
       match: ['what technologies do you use', 'technologies', 'skills', 'tech stack'],

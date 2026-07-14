@@ -10,7 +10,7 @@ export default function Experience() {
         <ScrollReveal>
           <SectionHeading
             eyebrow="Experience"
-            title="Education & Internships"
+            title="Education & Training"
             description=""
           />
         </ScrollReveal>
