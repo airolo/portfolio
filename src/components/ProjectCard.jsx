@@ -124,7 +124,7 @@ function ProjectDetailsModal({ project, open, onClose }) {
   return createPortal(modal, document.body);
 }
 
-export default function ProjectCard({ project, featured = false }) {
+export default function ProjectCard({ project }) {
   const [detailsOpen, setDetailsOpen] = useState(false);
 
   return (
@@ -145,7 +145,7 @@ export default function ProjectCard({ project, featured = false }) {
         <div className="flex h-full flex-col p-4 sm:p-5">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 sm:tracking-[0.3em]">
-              {featured ? 'Featured project' : project.type}
+              {project.type}
             </p>
             <h3 className="mt-3 text-base font-semibold tracking-tight sm:text-lg">{project.title}</h3>
             <p className="mt-2 text-xs leading-6 text-zinc-600 dark:text-zinc-300 sm:text-sm">{project.description}</p>

@@ -73,7 +73,7 @@ export const skills = [
 export const projects = [
   {
     title: 'Health Sciences Library Portal',
-    type: 'Featured full-stack web-app',
+    type: 'full-stack web-app',
     image: '/health-sciences-library-portal-preview.png',
     featured: true,
     description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable.',
@@ -87,6 +87,23 @@ export const projects = [
     ],
     github: 'https://github.com/airolo/hs-library-portal',
     live: 'https://hs-library-portal.vercel.app/login',
+  },
+  {
+    title: 'Bounce Academy',
+    type: 'E-commerce web app',
+    image: '/bounce-academy-preview.png',
+    featured: false,
+    description: 'Developed an e-commerce website for sports apparel, including shirts, shorts, and hoodies.',
+    detailsDescription:
+      'A product-focused e-commerce website built for selling sports apparel such as shirts, shorts, and hoodies. The platform is designed to showcase product collections clearly, make browsing simple across devices, and provide a smooth shopping flow from discovery to checkout. It emphasizes clean product presentation, responsive layouts, and straightforward navigation for a better customer experience.',
+    stack: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
+    keyFeatures: [
+      'Product catalog organized by apparel types like shirts, shorts, and hoodies.',
+      'Responsive storefront optimized for desktop and mobile shoppers.',
+      'Clear product-focused UI for faster browsing and purchase decisions.',
+    ],
+    github: 'https://github.com/airolo/bounce-academy',
+    live: '#',
   },
   
 ];
@@ -103,7 +120,8 @@ export const experience = [
     title: 'Software Engineering (OJT)',
     organization: 'Pixel 8: Web Solutions & Consultancy Inc.',
     period: 'January 26, 2026 - February 12, 2026',
-    description: 'Supported day-to-day development tasks, collaborated with teams, and strengthened practical delivery skills.',
+    description: 'Developed a Mobile Application Inventory System using Vue.js, Quasar Framework, PHP, and Docker, implementing features such as CRUD operations, inventory viewing, restocking, and product management.',
+    
   },
   {
     title: 'IT Support & Web Development (OJT)',

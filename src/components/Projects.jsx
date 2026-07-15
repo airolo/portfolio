@@ -4,8 +4,6 @@ import ScrollReveal from './ScrollReveal';
 import { projects } from '../data/portfolioData';
 
 export default function Projects() {
-  const featuredProject = projects[0];
-
   return (
     <section id="projects" className="scroll-mt-24 py-24 sm:py-28">
       <div className="section-shell">
@@ -17,9 +15,13 @@ export default function Projects() {
           />
         </ScrollReveal>
 
-        <ScrollReveal delay={0.08} className="mt-12">
-          <ProjectCard project={featuredProject} featured />
-        </ScrollReveal>
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project, index) => (
+            <ScrollReveal key={project.title} delay={0.08 + index * 0.06}>
+              <ProjectCard project={project} />
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   );
