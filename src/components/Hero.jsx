@@ -65,9 +65,7 @@ export default function Hero() {
             >
               View CV/Resume
             </button>
-            <a href="#contact" className="btn-secondary w-full sm:w-auto">
-              Contact Me
-            </a>
+          
             
             <CvModal open={modalOpen} onClose={() => setModalOpen(false)} />
           </motion.div>

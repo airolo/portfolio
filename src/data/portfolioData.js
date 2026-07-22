@@ -22,6 +22,7 @@ export const navigationLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Outside', href: '#outside-the-ide' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -90,12 +91,12 @@ export const projects = [
   },
   {
     title: 'Bounce Academy',
-    type: 'E-commerce web app',
+    type: 'E-commerce Web-App',
     image: '/bounce-academy-preview.png',
     featured: false,
     description: 'Developed an e-commerce website for sports apparel, including shirts, shorts, and hoodies.',
     detailsDescription:
-      'A product-focused e-commerce website built for selling sports apparel such as shirts, shorts, and hoodies. The platform is designed to showcase product collections clearly, make browsing simple across devices, and provide a smooth shopping flow from discovery to checkout. It emphasizes clean product presentation, responsive layouts, and straightforward navigation for a better customer experience.',
+      'A product-focused e-commerce website built for selling sports apparel such as shirts, shorts, and hoodies. The platform is designed to showcase product collections clearly, make browsing simple across devices, and provide a smooth shopping flow from discovery to checkout. It emphasizes clean product presentation, responsive layouts, and straightforward navigation for a better customer experience. The website is built using React for dynamic user interfaces, Tailwind CSS for rapid styling, and Vite for fast development and build processes. The project aims to create an engaging online shopping experience that encourages users to explore products and make purchases with ease.',
     stack: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
     keyFeatures: [
       'Product catalog organized by apparel types like shirts, shorts, and hoodies.',

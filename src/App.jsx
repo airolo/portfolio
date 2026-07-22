@@ -6,6 +6,7 @@ const FloatingChatbot = lazy(() => import('./components/FloatingChatbot'));
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
+import OutsideIDE from './components/OutsideIDE';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import useActiveSection from './hooks/useActiveSection';
@@ -69,6 +70,7 @@ export default function App() {
         <Skills />
         <Projects />
         <Experience />
+        <OutsideIDE />
         <Contact />
       </main>
       <Footer />
