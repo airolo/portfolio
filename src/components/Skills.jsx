@@ -15,8 +15,8 @@ export default function Skills() {
           />
         </ScrollReveal>
 
-        <ScrollReveal delay={0.08} className="mt-12">
-          <SkillCard title="Tech Stack" groups={skills} />
+        <ScrollReveal delay={0.08}>
+          <SkillCard groups={skills} />
         </ScrollReveal>
       </div>
     </section>

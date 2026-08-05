@@ -18,11 +18,9 @@ import {
 import { FiCode } from 'react-icons/fi';
 
 export const navigationLinks = [
-  { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Outside', href: '#outside-the-ide' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -76,7 +74,6 @@ export const projects = [
     title: 'Health Sciences Library Portal',
     type: 'full-stack web-app',
     image: '/health-sciences-library-portal-preview.png',
-    featured: true,
     description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable.',
     detailsDescription:
       'A fallback portal designed to keep library services accessible when the main OPAC is unavailable. It focuses on continuity, clarity, and a simple user flow for students and staff who still need catalog access and library information. The portal is built with React for a responsive interface, Supabase for backend services, and Tailwind CSS for a consistent and fast UI design. The project emphasizes a clean, user-friendly experience, ensuring that essential library functions remain available even during system outages. The portal includes features such as user authentication, catalog search, and access to library resources, all while maintaining a lightweight and efficient design.',
@@ -93,7 +90,6 @@ export const projects = [
     title: 'Bounce Academy',
     type: 'E-commerce Web-App',
     image: '/bounce-academy-preview.png',
-    featured: false,
     description: 'Developed an e-commerce website for sports apparel, including shirts, shorts, and hoodies.',
     detailsDescription:
       'A product-focused e-commerce website built for selling sports apparel such as shirts, shorts, and hoodies. The platform is designed to showcase product collections clearly, make browsing simple across devices, and provide a smooth shopping flow from discovery to checkout. It emphasizes clean product presentation, responsive layouts, and straightforward navigation for a better customer experience. The website is built using React for dynamic user interfaces, Tailwind CSS for rapid styling, and Vite for fast development and build processes. The project aims to create an engaging online shopping experience that encourages users to explore products and make purchases with ease.',
@@ -104,7 +100,7 @@ export const projects = [
       'Clear product-focused UI for faster browsing and purchase decisions.',
     ],
     github: 'https://github.com/airolo/bounce-academy',
-    live: '#',
+    live: 'https://bounce-academy.vercel.app',
   },
   
 ];
@@ -134,7 +130,6 @@ export const experience = [
 ];
 
 export const chatbotQuickActions = [
-  { label: 'About Me', target: 'about', prompt: 'Tell me about yourself' },
   { label: 'Skills', target: 'skills', prompt: 'What technologies do you use?' },
   { label: 'Projects', target: 'projects', prompt: 'Show me your projects' },
   { label: 'Resume', target: 'resume', prompt: 'Can I download your resume?' },

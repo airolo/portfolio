@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState, lazy, Suspense } from 'react';
-import About from './components/About';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
 const FloatingChatbot = lazy(() => import('./components/FloatingChatbot'));
@@ -66,7 +65,6 @@ export default function App() {
       />
       <main>
         <Hero />
-        <About />
         <Skills />
         <Projects />
         <Experience />

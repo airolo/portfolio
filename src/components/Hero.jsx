@@ -47,6 +47,7 @@ export default function Hero() {
             className="mt-6 max-w-2xl text-base leading-8 text-zinc-600 sm:mt-8 sm:text-lg dark:text-zinc-300"
           >
             Building clean, secure, and scalable systems.
+            I focus on writing maintainable code that solves real problems and delivering projects with a calm, methodical approach.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
