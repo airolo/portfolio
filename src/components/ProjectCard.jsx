@@ -47,7 +47,7 @@ function ProjectDetailsModal({ project, open, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`${project.title} project details`}
-        className="relative mx-auto flex h-[92svh] w-full max-w-6xl flex-col overflow-hidden rounded-[1.75rem] border border-white/40 bg-white/80 shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:bg-zinc-900/80"
+        className="relative mx-auto flex h-[92svh] w-full max-w-6xl flex-col overflow-hidden rounded-[1.75rem] border border-white/40 bg-gradient-to-b from-white to-zinc-100 shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:from-zinc-950 dark:to-zinc-900"
       >
         <div className="flex items-center justify-between border-b border-zinc-200/70 px-4 py-3 dark:border-zinc-800 sm:px-6">
           <button
@@ -59,18 +59,12 @@ function ProjectDetailsModal({ project, open, onClose }) {
           >
             <FiArrowLeft /> Back
           </button>
-          <p className="hidden text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500 sm:block dark:text-zinc-400">
-            {project.year}
-          </p>
         </div>
 
         <div className="grid flex-1 gap-0 overflow-hidden lg:grid-cols-[1fr_0.95fr]">
           <div className="flex h-full flex-col overflow-y-auto border-b border-zinc-200/70 p-5 sm:p-7 lg:border-b-0 lg:border-r dark:border-zinc-800">
-            <h3 className="mt-3 flex flex-wrap items-center gap-3 text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-3xl">
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-3xl">
               {project.title}
-              <span className="rounded-full border border-zinc-200 bg-white/70 px-2.5 py-1 text-xs font-medium text-zinc-500 dark:border-zinc-700 dark:bg-zinc-950/60 dark:text-zinc-400">
-                {project.year}
-              </span>
             </h3>
 
             <div className="mt-5">
@@ -223,12 +217,7 @@ export default function ProjectCard({ project }) {
           </div>
 
           <div className="flex flex-1 flex-col p-4 sm:p-5">
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="text-base font-semibold tracking-tight sm:text-lg">{project.title}</h3>
-              <span className="shrink-0 rounded-full border border-zinc-200 bg-white/70 px-2.5 py-1 text-xs font-medium text-zinc-500 dark:border-zinc-700 dark:bg-zinc-950/60 dark:text-zinc-400">
-                {project.year}
-              </span>
-            </div>
+            <h3 className="text-base font-semibold tracking-tight sm:text-lg">{project.title}</h3>
             <p className="mt-2 text-xs leading-6 text-zinc-600 dark:text-zinc-300 sm:text-sm">
               {project.description}
             </p>

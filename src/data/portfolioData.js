@@ -102,6 +102,42 @@ export const projects = [
     github: 'https://github.com/airolo/bounce-academy',
     live: 'https://bounce-academy.vercel.app',
   },
+  {
+    title: 'MySchedMate',
+    type: 'Scheduling Web-App',
+    year: 2025,
+    image: '/project-placeholder.svg',
+    images: ['/project-placeholder.svg'],
+    description: 'Developed a scheduling application that helps users organize tasks, appointments, and meetings in one place.',
+    detailsDescription:
+      'A scheduling web application designed to help users plan and organize tasks, appointments, and meetings in one place. It focuses on a clean and intuitive interface that makes creating schedules quick and straightforward, while keeping day-to-day planning easy to manage. The app is built with React for a responsive experience and styled with Tailwind CSS for a consistent, minimal UI. The project aims to simplify time management and make daily planning more efficient.',
+    stack: ['PHP', 'JavaScript', 'Tailwind CSS', ],
+    keyFeatures: [
+      'Create and manage schedules, tasks, and appointments.',
+      'Responsive interface for planning on any device.',
+      'Clean and minimal calendar-based experience.',
+    ],
+    github: '#',
+    live: 'https://myschedmate.vercel.app',
+  },
+  {
+    title: 'DatDev Project Portfolio',
+    type: 'Developer Portfolio',
+    year: 2026,
+    image: '/project-placeholder.svg',
+    images: ['/project-placeholder.svg'],
+    description: 'Developed a developer portfolio website that showcases projects, skills, and professional experience.',
+    detailsDescription:
+      'A developer portfolio website built to showcase projects, skills, and professional experience in a clean and professional way. It is designed to present work clearly and make it easy for visitors to explore projects, understand the technologies used, and reach out for collaboration. The site focuses on fast performance, responsive layouts, and a minimal aesthetic that highlights the developer\'s work. Built with React and styled with Tailwind CSS for a modern, consistent experience across devices.',
+    stack: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
+    keyFeatures: [
+      'Project showcase with detailed case summaries.',
+      'Responsive, minimal design across all devices.',
+      'Clear call-to-action sections for collaboration.',
+    ],
+    github: '#',
+    live: 'https://datdevph.vercel.app',
+  },
   
 ];
 

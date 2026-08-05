@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Project preview placeholder">
+  <rect width="800" height="500" fill="#ececf0"/>
+  <g stroke="#dcdce2" stroke-width="1">
+    <path d="M100 0V500 M200 0V500 M300 0V500 M400 0V500 M500 0V500 M600 0V500 M700 0V500"/>
+    <path d="M0 100H800 M0 200H800 M0 300H800 M0 400H800"/>
+  </g>
+  <g transform="translate(400 200)">
+    <rect x="-44" y="-30" width="88" height="60" rx="8" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+    <path d="M-20 30V-18 M20 30V-18 M-8 30V-18 M8 30V-18" stroke="#a1a1aa" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="300" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#71717a" font-weight="600">Preview Coming Soon</text>
+</svg>
