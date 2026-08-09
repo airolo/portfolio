@@ -1,16 +1,21 @@
-import SectionHeading from './SectionHeading';
+import SectionHeader from './SectionHeader';
 import SkillCard from './SkillCard';
 import ScrollReveal from './ScrollReveal';
 import { skills } from '../data/portfolioData';
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 border-y border-zinc-200/70 py-24 dark:border-zinc-800">
-      <div className="section-shell">
+    <section id="skills" className="scroll-mt-24 border-b-2 border-ink py-24 sm:py-28">
+      <div className="shell">
         <ScrollReveal>
-          <SectionHeading
-            eyebrow="Skills"
-            title="A compact stack for full-stack delivery."
+          <SectionHeader
+            index="01"
+            kicker="The Toolkit"
+            title={
+              <>
+               Compact for <span className="headline text-accent">full-stack</span> delivery.
+              </>
+            }
             description="The tools I use most often, grouped by how they support the build."
           />
         </ScrollReveal>

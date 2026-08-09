@@ -22,10 +22,8 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme, onS
 
   useEffect(() => {
     if (mobileOpen) {
-      // focus first link in mobile nav when opened
       firstMobileLinkRef.current?.focus();
     } else if (didMountRef.current) {
-      // restore focus to the toggle button when closed
       toggleButtonRef.current?.focus();
     }
 
@@ -44,30 +42,46 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme, onS
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/85 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/85">
-      <div className="section-shell flex h-20 items-center justify-between gap-4">
-        <a href="#home" className="text-sm font-semibold tracking-[0.3em] text-zinc-950 dark:text-zinc-50" onClick={() => setMobileOpen(false)}>
-          BGS
+    <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/90 backdrop-blur">
+      <div className="shell flex h-20 items-center justify-between gap-4">
+        <a
+          href="#home"
+          className="font-display text-xl font-bold tracking-tight sm:text-2xl"
+          onClick={() => setMobileOpen(false)}
+        >
+          BGS<span className="text-accent">.</span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`nav-link ${activeSection === link.href.slice(1) ? 'nav-link-active' : ''}`}
-              onClick={() => onSectionClick?.(link.href.slice(1))}
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
+          {links.map((link, idx) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`group flex items-baseline gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.18em] transition-colors duration-200 ${
+                  isActive ? 'text-accent' : 'text-muted hover:text-ink'
+                }`}
+                onClick={() => onSectionClick?.(link.href.slice(1))}
+              >
+                <span className="text-[10px] text-accent">0{idx + 1}</span>
+                {link.label}
+                <span
+                  className={`h-1.5 w-1.5 self-center rounded-full bg-accent transition-all duration-200 ${
+                    isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+                  }`}
+                  aria-hidden="true"
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 text-zinc-950 transition hover:-translate-y-0.5 hover:border-zinc-950 md:hidden dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-200"
+            className="inline-flex h-11 w-11 items-center justify-center border-2 border-ink bg-parchment text-ink transition-colors duration-200 hover:bg-accent hover:text-paper md:hidden"
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
@@ -80,16 +94,20 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme, onS
       </div>
 
       <div
-        className={`border-t border-zinc-200/80 bg-white px-4 py-4 transition-all duration-300 md:hidden dark:border-zinc-800 dark:bg-zinc-950 ${mobileOpen ? 'max-h-96 opacity-100' : 'pointer-events-none max-h-0 overflow-hidden opacity-0'}`}
+        className={`border-t-2 border-ink bg-paper transition-all duration-300 md:hidden ${
+          mobileOpen ? 'max-h-96 opacity-100' : 'pointer-events-none max-h-0 overflow-hidden opacity-0'
+        }`}
         id="mobile-navigation"
         aria-hidden={!mobileOpen}
       >
-        <nav className="section-shell flex flex-col gap-4" aria-label="Mobile navigation">
+        <nav className="shell flex flex-col gap-1 py-4" aria-label="Mobile navigation">
           {links.map((link, idx) => (
             <a
               key={link.href}
               href={link.href}
-              className={`text-base font-medium ${activeSection === link.href.slice(1) ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-500 dark:text-zinc-400'}`}
+              className={`group flex items-center gap-3 border-b border-line/60 py-3 font-display text-lg font-semibold ${
+                activeSection === link.href.slice(1) ? 'text-accent' : 'text-ink'
+              }`}
               onClick={() => {
                 onSectionClick?.(link.href.slice(1));
                 setMobileOpen(false);
@@ -97,6 +115,7 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme, onS
               tabIndex={mobileOpen ? 0 : -1}
               ref={idx === 0 ? firstMobileLinkRef : undefined}
             >
+              <span className="font-mono text-xs font-medium text-accent">0{idx + 1}</span>
               {link.label}
             </a>
           ))}

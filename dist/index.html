@@ -3,11 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of an Information Technology Software Engineer" />
-    <title>Bradley Soloria</title>
+    <meta name="description" content="Portfolio of Brad — an Information Technology Full-Stack Developer building clean, secure, and scalable systems." />
+    <title>Bradley Soloria — Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         color-scheme: light;
+        --loader-bg: #f5f1e8;
+        --loader-ink: #161310;
+        --loader-accent: #ff4e00;
+      }
+
+      html.dark {
+        color-scheme: dark;
+        --loader-bg: #0f0d0c;
+        --loader-ink: #f2ede3;
+        --loader-accent: #ff4e00;
       }
 
       body[data-app-ready='true'] #loading-screen {
@@ -30,71 +46,39 @@
         z-index: 9999;
         display: grid;
         place-items: center;
-        background:
-          radial-gradient(circle at top, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 0.96) 42%, rgba(228, 228, 231, 0.98)),
-          linear-gradient(135deg, rgba(9, 9, 11, 0.03), rgba(9, 9, 11, 0));
-        color: #09090b;
-        transition: opacity 1200ms ease, visibility 1200ms ease;
+        background: var(--loader-bg);
+        color: var(--loader-ink);
+        transition: opacity 900ms ease, visibility 900ms ease;
       }
 
       .loading-card {
         display: grid;
         place-items: center;
-        gap: 1rem;
-        padding: 2rem 2.5rem;
+        gap: 1.5rem;
       }
 
       .loading-mark {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font: 800 clamp(2.75rem, 10vw, 5.5rem) / 1 Inter, system-ui, sans-serif;
-        letter-spacing: 0.18em;
+        font: italic 400 clamp(4.5rem, 16vw, 8rem) / 1 'Instrument Serif', Georgia, serif;
       }
 
-      .loading-mark span {
-        display: inline-block;
-        transform-origin: center;
-        animation: loading-bounce 1.2s ease-in-out infinite;
-        text-shadow: 0 0 24px rgba(24, 24, 27, 0.08);
-      }
-
-      .loading-mark span:nth-child(2) {
-        animation-delay: 0.12s;
-      }
-
-      .loading-mark span:nth-child(3) {
-        animation-delay: 0.24s;
+      .loading-mark .dot {
+        color: var(--loader-accent);
       }
 
       .loading-ring {
-        width: 4.5rem;
-        height: 4.5rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(24, 24, 27, 0.14);
-        border-top-color: rgba(24, 24, 27, 0.9);
+        width: 3rem;
+        height: 3rem;
+        border: 2px solid currentColor;
+        border-color: transparent transparent currentColor currentColor;
         animation: loading-spin 1s linear infinite;
       }
 
       .loading-copy {
         margin: 0;
-        font: 500 0.875rem/1.5 Inter, system-ui, sans-serif;
-        letter-spacing: 0.24em;
+        font: 500 0.75rem/1.4 'JetBrains Mono', ui-monospace, monospace;
+        letter-spacing: 0.32em;
         text-transform: uppercase;
-        color: rgba(24, 24, 27, 0.58);
-      }
-
-      @keyframes loading-bounce {
-        0%,
-        100% {
-          transform: translateY(0) scale(1);
-          opacity: 0.76;
-        }
-
-        50% {
-          transform: translateY(-0.5rem) scale(1.06);
-          opacity: 1;
-        }
+        color: var(--loader-ink);
       }
 
       @keyframes loading-spin {
@@ -103,17 +87,13 @@
         }
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-Rp0EHSC1.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Co2DPp81.css">
+    <script type="module" crossorigin src="/assets/index-BRJi6Jug.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-OAj5JZCI.css">
   </head>
-  <body class="bg-white text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50">
+  <body class="bg-paper text-ink antialiased">
     <div id="loading-screen" role="status" aria-live="polite" aria-label="Loading portfolio">
       <div class="loading-card">
-        <div class="loading-mark" aria-hidden="true">
-          <span>B</span>
-          <span>G</span>
-          <span>S</span>
-        </div>
+        <div class="loading-mark" aria-hidden="true">B<span class="dot">.</span></div>
         <div class="loading-ring" aria-hidden="true"></div>
         <p class="loading-copy">Loading portfolio</p>
       </div>
@@ -129,6 +109,6 @@
       } else {
         window.addEventListener('load', markAppReady, { once: true });
       }
-    </script>
+    </script>
   </body>
 </html>

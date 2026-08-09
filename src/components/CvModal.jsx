@@ -22,7 +22,6 @@ export default function CvModal({ open, onClose }) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
-      // focus close button when opened
       setTimeout(() => closeBtnRef.current?.focus(), 0);
       setSelectedDocument('resume');
     } else {
@@ -40,27 +39,27 @@ export default function CvModal({ open, onClose }) {
 
   const modal = (
     <div style={{ zIndex: 9999 }} className="fixed inset-0 flex items-center justify-center p-3 sm:p-4">
-      <div className="fixed inset-0 bg-black/40" onClick={onClose} aria-hidden="true" />
+      <div className="fixed inset-0 bg-coal/70" onClick={onClose} aria-hidden="true" />
 
       <div
         role="dialog"
         aria-modal="true"
         aria-label="CV and resume preview"
-        className="relative max-h-[92svh] w-full max-w-4xl overflow-hidden rounded-xl bg-white shadow-2xl dark:bg-zinc-900"
+        className="relative max-h-[92svh] w-full max-w-4xl overflow-hidden border-2 border-ink bg-parchment shadow-offset-accent"
       >
-        <div className="flex flex-col gap-3 border-b border-zinc-200 px-4 py-3 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-2">
-            <h3 className="text-sm font-semibold text-zinc-950 dark:text-zinc-50">{currentDocument.title}</h3>
+        <div className="flex flex-col gap-3 border-b-2 border-ink bg-paper px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3">
+            <h3 className="font-display text-lg font-semibold tracking-tight">{currentDocument.title}</h3>
             <div className="flex flex-wrap gap-2">
               {Object.entries(documents).map(([key, document]) => (
                 <button
                   key={document.label}
                   type="button"
                   onClick={() => setSelectedDocument(key)}
-                  className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
+                  className={`border-2 px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ${
                     selectedDocument === key
-                      ? 'border-zinc-950 bg-zinc-950 text-white dark:border-zinc-50 dark:bg-zinc-50 dark:text-zinc-950'
-                      : 'border-zinc-200 text-zinc-600 hover:border-zinc-950 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-200 dark:hover:text-zinc-50'
+                      ? 'border-accent bg-accent text-paper'
+                      : 'border-line bg-parchment text-ink hover:border-accent hover:text-accent'
                   }`}
                 >
                   {document.label}
@@ -72,7 +71,7 @@ export default function CvModal({ open, onClose }) {
           <div className="grid gap-2 sm:flex sm:items-center">
             <a
               href={`/${currentDocument.fileName}`}
-              className="btn-secondary w-full sm:w-auto"
+              className="btn-outline w-full px-4 py-2.5 text-xs sm:w-auto"
               target="_blank"
               rel="noopener noreferrer"
               download
@@ -82,7 +81,7 @@ export default function CvModal({ open, onClose }) {
             <button
               ref={closeBtnRef}
               onClick={onClose}
-              className="inline-flex h-10 items-center justify-center rounded-md border border-zinc-200 px-3 py-1 text-sm dark:border-zinc-800"
+              className="inline-flex h-11 items-center justify-center border-2 border-ink bg-parchment px-4 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 hover:bg-accent hover:text-paper"
               aria-label="Close document preview"
             >
               Close
@@ -94,7 +93,7 @@ export default function CvModal({ open, onClose }) {
           <iframe
             src={`/${currentDocument.fileName}`}
             title={`${currentDocument.title} preview`}
-            className="h-full w-full bg-white/50 dark:bg-zinc-900"
+            className="h-full w-full bg-parchment"
           >
             <p className="p-6 text-sm">Preview not available. You can download the CV instead.</p>
           </iframe>

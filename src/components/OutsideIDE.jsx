@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import SectionHeading from './SectionHeading';
+import SectionHeader from './SectionHeader';
 import ScrollReveal from './ScrollReveal';
 
 const RenderTarget = {
@@ -213,21 +213,23 @@ function SwipeCardStack({
 
 export default function OutsideIDE() {
   return (
-    <section id="outside-the-ide" className="scroll-mt-24 border-y border-zinc-200/70 py-24 dark:border-zinc-800">
-      <div className="section-shell">
+    <section id="outside-the-ide" className="scroll-mt-24 py-24 sm:py-28">
+      <div className="shell">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <ScrollReveal>
-            <SectionHeading
-              eyebrow="Life beyond the desk"
-              title="Outside the IDE"
+            <SectionHeader
+              index="04"
+              kicker="Life beyond the desk"
+              title={
+                <>
+                  Outside the <span className="headline text-accent">IDE</span>
+                </>
+              }
               description="When I'm not coding, I enjoy staying active and exploring new experiences. Whether it's hitting the gym, playing basketball, going for a run, or immersing myself in gaming, I find balance and inspiration in these activities."
             />
             <div className="mt-8 flex flex-wrap gap-3">
               {CARD_LABELS.map((label) => (
-                <span
-                  key={label}
-                  className="rounded-full border border-zinc-200 bg-white/80 px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-200"
-                >
+                <span key={label} className="chip">
                   {label}
                 </span>
               ))}
@@ -235,8 +237,8 @@ export default function OutsideIDE() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.08} className="flex justify-center lg:justify-end">
-            <div className="w-full max-w-[440px] rounded-[2rem] border border-zinc-200/70 bg-white/70 p-4 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.35)] backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/60 sm:p-5">
-              <div className="aspect-[408/301] overflow-hidden rounded-[1.5rem]">
+            <div className="w-full max-w-[440px] border-2 border-ink bg-parchment p-4 shadow-offset-accent sm:p-5">
+              <div className="aspect-[408/301] overflow-hidden border border-line">
                 <SwipeCardStack cardWidth={408} cardHeight={301} />
               </div>
             </div>

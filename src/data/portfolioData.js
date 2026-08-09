@@ -106,8 +106,8 @@ export const projects = [
     title: 'MySchedMate',
     type: 'Scheduling Web-App',
     year: 2025,
-    image: '/project-placeholder.svg',
-    images: ['/project-placeholder.svg'],
+    image: '/myschedmate.jpg',
+    images: ['/myschedmate.jpg'],
     description: 'Developed a scheduling application that helps users organize tasks, appointments, and meetings in one place.',
     detailsDescription:
       'A scheduling web application designed to help users plan and organize tasks, appointments, and meetings in one place. It focuses on a clean and intuitive interface that makes creating schedules quick and straightforward, while keeping day-to-day planning easy to manage. The app is built with React for a responsive experience and styled with Tailwind CSS for a consistent, minimal UI. The project aims to simplify time management and make daily planning more efficient.',
@@ -124,8 +124,8 @@ export const projects = [
     title: 'DatDev Project Portfolio',
     type: 'Developer Portfolio',
     year: 2026,
-    image: '/project-placeholder.svg',
-    images: ['/project-placeholder.svg'],
+    image: '/datdev.png',
+    images: ['/datdev.png'],
     description: 'Developed a developer portfolio website that showcases projects, skills, and professional experience.',
     detailsDescription:
       'A developer portfolio website built to showcase projects, skills, and professional experience in a clean and professional way. It is designed to present work clearly and make it easy for visitors to explore projects, understand the technologies used, and reach out for collaboration. The site focuses on fast performance, responsive layouts, and a minimal aesthetic that highlights the developer\'s work. Built with React and styled with Tailwind CSS for a modern, consistent experience across devices.',
@@ -152,54 +152,15 @@ export const experience = [
   {
     title: 'Software Engineering (OJT)',
     organization: 'Pixel 8: Web Solutions & Consultancy Inc.',
-    period: 'January 26, 2026 - February 12, 2026',
+    period: 'January 2026 - February 2026',
     description: 'Developed a Mobile Application Inventory System using Vue.js, Quasar Framework, PHP, and Docker, implementing features such as CRUD operations, inventory viewing, restocking, and product management.',
     
   },
   {
     title: 'IT Support & Web Development (OJT)',
     organization: 'Bicol University Health Sciences Library',
-    period: 'February 19, 2026 - May 11, 2026',
+    period: 'February 2026 - May 2026',
     description: 'Developed a backup system project that provides a fallback library portal that can be used when the main OPAC is unavailable. Provide technical assistance, troubleshoot hardware and software issues.',
   },
   
 ];
-
-export const chatbotQuickActions = [
-  { label: 'Skills', target: 'skills', prompt: 'What technologies do you use?' },
-  { label: 'Projects', target: 'projects', prompt: 'Show me your projects' },
-  { label: 'Resume', target: 'resume', prompt: 'Can I download your resume?' },
-  { label: 'Contact', target: 'contact', prompt: 'How can I contact you?' },
-];
-
-export const chatbotKnowledge = {
-  greeting:
-    "Hi! I'm Bradley. Ask me anything about my projects, skills, or contact information.",
-  responses: [
-    {
-      match: ['tell me about yourself', 'about yourself', 'about me', 'who are you'],
-      reply:
-        'I am an Information Technology Full-Stack Developer focused on building clean, secure, and scalable systems with a minimalist product mindset.',
-    },
-    {
-      match: ['what technologies do you use', 'technologies', 'skills', 'tech stack'],
-      reply:
-        'My core stack includes HTML, CSS, JavaScript, React, Tailwind CSS, PHP, Node.js, MySQL, Firebase, Git, GitHub, and VS Code.',
-    },
-    {
-      match: ['show me your projects', 'projects', 'portfolio projects'],
-      reply:
-        'My featured project is the Health Sciences Library Portal, a full-stack React and Supabase web app. Use the Projects section to explore it.',
-    },
-    {
-      match: ['how can i contact you', 'contact', 'email', 'linkedin', 'github'],
-      reply:
-        'You can reach out through the Contact section using the form or the social links for GitHub, LinkedIn, and email.',
-    },
-    {
-      match: ['can i download your resume', 'resume', 'cv'],
-      reply:
-        'Yes. You can open the CV preview from the hero section and download my resume there.',
-    },
-  ],
-};

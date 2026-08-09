@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useRef, useState, lazy, Suspense } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
-const FloatingChatbot = lazy(() => import('./components/FloatingChatbot'));
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
@@ -55,7 +54,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.06),_transparent_34%),linear-gradient(to_bottom,_rgba(255,255,255,1),_rgba(245,245,245,1))] text-zinc-950 dark:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_34%),linear-gradient(to_bottom,_rgba(9,9,11,1),_rgba(18,18,20,1))] dark:text-zinc-50">
+    <div className="min-h-screen bg-paper text-ink">
       <Navbar
         links={navigationLinks}
         activeSection={activeSection}
@@ -72,9 +71,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <Suspense fallback={null}>
-        <FloatingChatbot />
-      </Suspense>
     </div>
   );
 }
