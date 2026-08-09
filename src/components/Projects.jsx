@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 import { projects } from '../data/portfolioData';
 import { FiArrowDownRight } from 'react-icons/fi';
 
-const INITIAL_COUNT = 3;
+const INITIAL_COUNT = 4;
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -20,7 +20,7 @@ export default function Projects() {
             kicker="Selected Work"
             title={
               <>
-                Projects with a real <span className="headline text-accent">product</span> shape.
+                Projects with a  <span className="headline text-accent">product</span> shape.
               </>
             }
             description="A closer look at the systems I have built, from full-stack portals to focused web experiences."
