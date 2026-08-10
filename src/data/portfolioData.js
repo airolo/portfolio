@@ -108,7 +108,7 @@ export const projects = [
     year: 2025,
     image: '/myschedmate.jpg',
     images: ['/myschedmate.jpg'],
-    description: 'Developed a scheduling application that helps users organize tasks, appointments, and meetings in one place.',
+    description: 'Developed a scheduling application that helps student assistants organize their work-life balance.',
     detailsDescription:
       'A scheduling web application designed to help users plan and organize tasks, appointments, and meetings in one place. It focuses on a clean and intuitive interface that makes creating schedules quick and straightforward, while keeping day-to-day planning easy to manage. The app is built with React for a responsive experience and styled with Tailwind CSS for a consistent, minimal UI. The project aims to simplify time management and make daily planning more efficient.',
     stack: ['PHP', 'JavaScript', 'Tailwind CSS', ],

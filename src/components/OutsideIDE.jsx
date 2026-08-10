@@ -16,16 +16,16 @@ const DEPTH_SPACING = 10;
 
 const DEFAULT_IMAGES = [
   {
-    src: 'https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/eec164e9-23f8-4f87-b48a-a208fa806100/w=800',
+    src: '/gym.jpg',
   },
   {
-    src: 'https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/859c75ea-953e-489e-be61-91a03a35d700/w=800',
+    src: '/basketball.jpg',
   },
   {
     src: 'https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/933a7615-f4b6-4eae-8ed1-705fa0e24400/w=800',
   },
   {
-    src: 'https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/7d4d2641-d6a8-4fef-e85c-b12ed100d500/w=800',
+    src: '/gaming.jpg',
   },
 ];
 
@@ -239,7 +239,7 @@ export default function OutsideIDE() {
           <ScrollReveal delay={0.08} className="flex justify-center lg:justify-end">
             <div className="w-full max-w-[440px] border-2 border-ink bg-parchment p-4 shadow-offset-accent sm:p-5">
               <div className="aspect-[408/301] overflow-hidden border border-line">
-                <SwipeCardStack cardWidth={408} cardHeight={301} />
+                <SwipeCardStack cardWidth={408} cardHeight={301} cardRadius={0} />
               </div>
             </div>
           </ScrollReveal>

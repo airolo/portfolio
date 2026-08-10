@@ -10,7 +10,6 @@ const marqueeItems = [
   'PHP',
   'Node.js',
   'MySQL',
-  'UI Engineering',
   'Clean Code',
 ];
 
