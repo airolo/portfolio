@@ -101,6 +101,7 @@ export const projects = [
     ],
     github: 'https://github.com/airolo/bounce-academy',
     live: 'https://bounce-academy.vercel.app',
+    liveDisabled: true,
   },
   {
     title: 'MySchedMate',
@@ -119,6 +120,7 @@ export const projects = [
     ],
     github: '#',
     live: 'https://myschedmate.vercel.app',
+    liveDisabled: true,
   },
   {
     title: 'DatDev Project Portfolio',

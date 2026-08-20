@@ -90,9 +90,19 @@ function ProjectDetailsModal({ project, open, onClose }) {
 
             <div className="mt-8 flex flex-wrap gap-3">
               {project.live && project.live !== '#' ? (
-                <a className="btn-ink px-4 py-2.5 text-xs" href={project.live} target="_blank" rel="noopener noreferrer">
-                  Live Demo <FiExternalLink />
-                </a>
+                project.liveDisabled ? (
+                  <span
+                    aria-disabled="true"
+                    title="Live demo unavailable"
+                    className="btn-ink cursor-not-allowed px-4 py-2.5 text-xs opacity-50"
+                  >
+                    Live Demo <FiExternalLink />
+                  </span>
+                ) : (
+                  <a className="btn-ink px-4 py-2.5 text-xs" href={project.live} target="_blank" rel="noopener noreferrer">
+                    Live Demo <FiExternalLink />
+                  </a>
+                )
               ) : null}
               <a className="btn-outline px-4 py-2.5 text-xs" href={project.github} target="_blank" rel="noopener noreferrer">
                 <FiGithub size={14} /> Source Code
@@ -221,14 +231,24 @@ export default function ProjectCard({ project, number }) {
           </button>
 
           {project.live && project.live !== '#' ? (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline flex-1 justify-center px-4 py-2.5 text-xs"
-            >
-              Live Demo <FiExternalLink />
-            </a>
+            project.liveDisabled ? (
+              <span
+                aria-disabled="true"
+                title="Live demo unavailable"
+                className="btn-outline flex-1 cursor-not-allowed justify-center px-4 py-2.5 text-xs opacity-50"
+              >
+                Live Demo <FiExternalLink />
+              </span>
+            ) : (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline flex-1 justify-center px-4 py-2.5 text-xs"
+              >
+                Live Demo <FiExternalLink />
+              </a>
+            )
           ) : null}
           <a
             href={project.github}
