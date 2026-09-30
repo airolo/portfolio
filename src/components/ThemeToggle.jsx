@@ -7,8 +7,8 @@ export default function ThemeToggle({ theme, onToggle }) {
     <button
       type="button"
       onClick={onToggle}
-      className="inline-flex h-11 w-11 items-center justify-center border-2 border-ink bg-parchment text-ink transition-colors duration-200 hover:bg-accent hover:text-paper"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      className="inline-flex h-10 w-10 items-center justify-center text-muted transition-colors duration-150 hover:text-ink"
     >
       {isDark ? <FiSun size={18} /> : <FiMoon size={18} />}
     </button>

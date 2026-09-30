@@ -16,14 +16,14 @@ export default function App() {
   const sectionIds = useMemo(() => navigationLinks.map((link) => link.href.slice(1)), []);
   const observedSection = useActiveSection(sectionIds);
   const pendingSectionRef = useRef(null);
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? '');
+  const [activeSection, setActiveSection] = useState('');
   const [theme, setTheme] = useState(() => {
     const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
     if (storedTheme === 'dark' || storedTheme === 'light') {
       return storedTheme;
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'dark';
   });
 
   useEffect(() => {

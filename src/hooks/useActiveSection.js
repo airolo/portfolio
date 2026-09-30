@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
 export default function useActiveSection(sectionIds) {
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? '');
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const resolveActiveSection = () => {
       const triggerPoint = window.innerHeight * 0.35;
-      let currentSection = sectionIds[0] ?? '';
+      let currentSection = '';
 
       sectionIds.forEach((sectionId) => {
         const element = document.getElementById(sectionId);

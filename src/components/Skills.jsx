@@ -5,22 +5,17 @@ import { skills } from '../data/portfolioData';
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 border-b-2 border-ink py-24 sm:py-28">
+    <section id="skills" className="scroll-mt-20 border-t border-line py-20 sm:py-28">
       <div className="shell">
         <ScrollReveal>
           <SectionHeader
-            index="01"
-            kicker="The Toolkit"
-            title={
-              <>
-               Compact for <span className="headline text-accent">full-stack</span> delivery.
-              </>
-            }
-            description="The tools I use most often, grouped by how they support the build."
+            kicker="Skills"
+            title="Tools I work with."
+            description="Grouped by where they sit in a build — interface, server, data, and the tools around them."
           />
         </ScrollReveal>
 
-        <ScrollReveal delay={0.08}>
+        <ScrollReveal delay={0.06}>
           <SkillCard groups={skills} />
         </ScrollReveal>
       </div>

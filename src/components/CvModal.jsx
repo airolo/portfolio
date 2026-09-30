@@ -1,29 +1,21 @@
-import { useEffect, useRef } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { FiDownload, FiX } from 'react-icons/fi';
 
 const documents = {
-  cv: {
-    label: 'CV',
-    fileName: 'cv.pdf',
-    title: 'Curriculum Vitae',
-  },
-  resume: {
-    label: 'Resume',
-    fileName: 'resume.pdf',
-    title: 'Resume',
-  },
+  cv: { label: 'CV', fileName: 'cv.pdf', title: 'Curriculum Vitae' },
+  resume: { label: 'Resume', fileName: 'resume.pdf', title: 'Resume' },
 };
 
 export default function CvModal({ open, onClose }) {
-  const closeBtnRef = useRef(null);
+  const closeButtonRef = useRef(null);
   const [selectedDocument, setSelectedDocument] = useState('resume');
 
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
-      setTimeout(() => closeBtnRef.current?.focus(), 0);
       setSelectedDocument('resume');
+      closeButtonRef.current?.focus();
     } else {
       document.body.style.overflow = '';
     }
@@ -33,69 +25,83 @@ export default function CvModal({ open, onClose }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open, onClose]);
+
   if (!open || typeof document === 'undefined') return null;
 
   const currentDocument = documents[selectedDocument];
 
   const modal = (
-    <div style={{ zIndex: 9999 }} className="fixed inset-0 flex items-center justify-center p-3 sm:p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
       <div className="fixed inset-0 bg-coal/70" onClick={onClose} aria-hidden="true" />
 
       <div
         role="dialog"
         aria-modal="true"
         aria-label="CV and resume preview"
-        className="relative max-h-[92svh] w-full max-w-4xl overflow-hidden border-2 border-ink bg-parchment shadow-offset-accent"
+        className="relative flex max-h-[90svh] w-full max-w-5xl flex-col overflow-hidden border border-line bg-parchment"
       >
-        <div className="flex flex-col gap-3 border-b-2 border-ink bg-paper px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-3">
-            <h3 className="font-display text-lg font-semibold tracking-tight">{currentDocument.title}</h3>
-            <div className="flex flex-wrap gap-2">
-              {Object.entries(documents).map(([key, document]) => (
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-5 py-3">
+          <div className="flex items-center gap-4">
+            <h3 className="text-sm font-semibold">{currentDocument.title}</h3>
+
+            <div className="flex gap-1">
+              {Object.entries(documents).map(([key, doc]) => (
                 <button
-                  key={document.label}
+                  key={doc.label}
                   type="button"
                   onClick={() => setSelectedDocument(key)}
-                  className={`border-2 px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ${
+                  aria-pressed={selectedDocument === key}
+                  className={`px-2.5 py-1 text-xs transition-colors duration-150 ${
                     selectedDocument === key
-                      ? 'border-accent bg-accent text-paper'
-                      : 'border-line bg-parchment text-ink hover:border-accent hover:text-accent'
+                      ? 'bg-ink text-paper'
+                      : 'text-muted hover:text-ink'
                   }`}
                 >
-                  {document.label}
+                  {doc.label}
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="grid gap-2 sm:flex sm:items-center">
+          <div className="flex items-center gap-2">
             <a
               href={`/${currentDocument.fileName}`}
-              className="btn-outline w-full px-4 py-2.5 text-xs sm:w-auto"
               target="_blank"
               rel="noopener noreferrer"
               download
+              className="btn-secondary px-4 py-2 text-sm"
             >
-              Download {currentDocument.label}
+              <FiDownload size={15} /> Download
             </a>
             <button
-              ref={closeBtnRef}
+              ref={closeButtonRef}
+              type="button"
               onClick={onClose}
-              className="inline-flex h-11 items-center justify-center border-2 border-ink bg-parchment px-4 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 hover:bg-accent hover:text-paper"
               aria-label="Close document preview"
+              className="inline-flex h-9 w-9 items-center justify-center text-muted transition-colors duration-150 hover:text-ink"
             >
-              Close
+              <FiX size={18} />
             </button>
           </div>
         </div>
 
-        <div className="h-[70svh] w-full sm:h-[80vh]">
+        <div className="min-h-0 flex-1">
           <iframe
             src={`/${currentDocument.fileName}`}
             title={`${currentDocument.title} preview`}
-            className="h-full w-full bg-parchment"
+            className="h-[70svh] w-full bg-parchment"
           >
-            <p className="p-6 text-sm">Preview not available. You can download the CV instead.</p>
+            <p className="p-6 text-sm">Preview unavailable. You can download the file instead.</p>
           </iframe>
         </div>
       </div>
