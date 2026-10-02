@@ -10,26 +10,11 @@ import Skills from './components/Skills';
 import useActiveSection from './hooks/useActiveSection';
 import { navigationLinks } from './data/portfolioData';
 
-const THEME_STORAGE_KEY = 'portfolio-theme';
-
 export default function App() {
   const sectionIds = useMemo(() => navigationLinks.map((link) => link.href.slice(1)), []);
   const observedSection = useActiveSection(sectionIds);
   const pendingSectionRef = useRef(null);
   const [activeSection, setActiveSection] = useState('');
-  const [theme, setTheme] = useState(() => {
-    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    if (storedTheme === 'dark' || storedTheme === 'light') {
-      return storedTheme;
-    }
-
-    return 'dark';
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }, [theme]);
 
   useEffect(() => {
     if (!observedSection) {
@@ -58,8 +43,6 @@ export default function App() {
       <Navbar
         links={navigationLinks}
         activeSection={activeSection}
-        theme={theme}
-        onToggleTheme={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
         onSectionClick={handleSectionClick}
       />
       <main>

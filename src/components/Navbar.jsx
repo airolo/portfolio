@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import ThemeToggle from './ThemeToggle';
 
-export default function Navbar({ links, activeSection, theme, onToggleTheme, onSectionClick }) {
+export default function Navbar({ links, activeSection, onSectionClick }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleButtonRef = useRef(null);
   const firstMobileLinkRef = useRef(null);
@@ -69,7 +68,6 @@ export default function Navbar({ links, activeSection, theme, onToggleTheme, onS
         </nav>
 
         <div className="flex items-center gap-1">
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <button
             type="button"
             onClick={() => setMobileOpen((open) => !open)}
