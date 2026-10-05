@@ -13,7 +13,7 @@ export default function OutsideIDE() {
           <SectionHeader
             kicker="Outside the IDE"
             title="Away from the desk."
-            description="Gym in the morning, basketball most evenings, a run when the weather holds, and gaming when nothing else is on the calendar."
+            description="Gym occasionally, basketball most evenings, a run when the weather holds, and gaming when nothing else is on the calendar."
           />
         </ScrollReveal>
 

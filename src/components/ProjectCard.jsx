@@ -209,7 +209,7 @@ export default function ProjectCard({ project }) {
 
             {hasLive(project) && (
               <a href={project.live} target="_blank" rel="noopener noreferrer" className="link text-sm">
-                Live demo
+                Live Demo
               </a>
             )}
 

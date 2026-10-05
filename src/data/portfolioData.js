@@ -113,7 +113,7 @@ export const projects = [
       'Responsive calendar-based interface.',
       'Works cleanly on phone and desktop.',
     ],
-    github: '#',
+    github: 'https://github.com/airolo/capstone-myschedmate',
     live: 'https://myschedmate.vercel.app',
     liveDisabled: true,
   },
