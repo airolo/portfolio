@@ -86,25 +86,9 @@ export const projects = [
     live: 'https://hs-library-portal.vercel.app/login',
   },
   {
-    title: 'Bounce Academy',
-    image: '/bounce-academy-preview.png',
-    description: 'An e-commerce storefront for sports apparel — shirts, shorts, and hoodies.',
-    detailsDescription:
-      'A storefront built around a clear browse-to-checkout flow. Products are grouped by apparel type, the catalog is responsive, and the layout stays deliberately plain so the products carry the page.',
-    stack: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
-    keyFeatures: [
-      'Catalog organized by apparel type.',
-      'Responsive storefront for desktop and mobile.',
-      'Streamlined navigation from browsing to cart.',
-    ],
-    github: 'https://github.com/airolo/bounce-academy',
-    live: 'https://bounce-academy.vercel.app',
-    liveDisabled: true,
-  },
-  {
     title: 'MySchedMate',
     image: '/myschedmate.jpg',
-    description: 'A scheduling app for student assistants juggling tasks, appointments, and shifts.',
+    description: 'A Capstone Project scheduling web-app for student assistants juggling tasks, appointments, and shifts.',
     detailsDescription:
       'A scheduling web app that puts tasks, appointments, and meetings in one place. The interface stays minimal so creating and editing a schedule takes a couple of clicks, on any device.',
     stack: ['PHP', 'JavaScript', 'Tailwind CSS'],
